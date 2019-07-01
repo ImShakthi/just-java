@@ -1,2 +1,2 @@
 # just-java
-Hola! Java learnings and snnipets
+Yup! You read it right, its `Just Java`:coffee:
