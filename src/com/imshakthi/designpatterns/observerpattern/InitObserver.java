@@ -2,6 +2,7 @@ package com.imshakthi.designpatterns.observerpattern;
 
 import com.imshakthi.designpatterns.observerpattern.model.News;
 import com.imshakthi.designpatterns.observerpattern.publisher.BusinessNewsPublisher;
+import com.imshakthi.designpatterns.observerpattern.subscriber.EmailSubscriber;
 import com.imshakthi.designpatterns.observerpattern.subscriber.SmsSubscriber;
 
 public class InitObserver {
@@ -14,10 +15,12 @@ public class InitObserver {
         SmsSubscriber smsSubscriber1 = new SmsSubscriber();
         SmsSubscriber smsSubscriber2 = new SmsSubscriber();
         SmsSubscriber smsSubscriber3 = new SmsSubscriber();
+        EmailSubscriber emailSubscriber1 = new EmailSubscriber();
 
         smsSubscriber1.attach(publisher);
         smsSubscriber2.attach(publisher);
         smsSubscriber3.attach(publisher);
+        emailSubscriber1.attach(publisher);
 
         News news = new News("title 1", "content 1");
         publisher.addNews(news);
