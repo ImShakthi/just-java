@@ -51,6 +51,33 @@ class ArraysTest {
         int nofDuplicates = testClass.removeDuplicates(nums);
 
         assertEquals(5, nofDuplicates);
-        assertArrayEquals(nums, expected);
+        assertArrayEquals(expected, nums);
+    }
+
+    @Test
+    void maxProfitShouldReturnProfitOfTwoDays() {
+        int[] prices = new int[]{7,1,5,3,6,4};
+
+        int profit = testClass.maxProfit(prices);
+
+        assertEquals(7, profit);
+    }
+
+    @Test
+    void maxProfitShouldReturnProfitWhen() {
+        int[] prices = new int[]{1,2,3,4,5};
+
+        int profit = testClass.maxProfit(prices);
+
+        assertEquals(4, profit);
+    }
+
+    @Test
+    void maxProfitShouldReturnZeroWhenProfitIsNotPossible() {
+        int[] prices = new int[]{7, 6, 4, 3, 1};
+
+        int profit = testClass.maxProfit(prices);
+
+        assertEquals(0, profit);
     }
 }
