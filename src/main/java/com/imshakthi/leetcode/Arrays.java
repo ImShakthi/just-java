@@ -1,5 +1,6 @@
 package com.imshakthi.leetcode;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,5 +64,24 @@ public class Arrays {
             maxprofit += peak - valley;
         }
         return maxprofit;
+    }
+
+    public int[] plusOne(int[] digits) {
+        BigDecimal input = BigDecimal.ZERO;
+        for (int i = 0; i < digits.length; i++) {
+            BigDecimal power = new BigDecimal(String.valueOf(Math.pow(10, i)));
+            BigDecimal individualNum = BigDecimal.valueOf(digits[digits.length - i - 1]).multiply(power);
+            input = input.add(individualNum);
+        }
+        input = input.add(BigDecimal.ONE);
+
+
+
+        String onePlus = String.valueOf(input);
+        int[] result = new int[onePlus.length()];
+        for (int i = 0; i < onePlus.length(); i++) {
+            result[i] = Integer.parseInt(String.valueOf(onePlus.charAt(i)));
+        }
+        return result;
     }
 }
