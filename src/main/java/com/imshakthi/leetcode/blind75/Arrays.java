@@ -1,4 +1,4 @@
-package com.imshakthi.leetcode;
+package com.imshakthi.leetcode.blind75;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
