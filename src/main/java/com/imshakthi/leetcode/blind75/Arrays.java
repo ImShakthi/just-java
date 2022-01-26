@@ -87,17 +87,15 @@ public class Arrays {
         int length = input.length;
         int[] answer = new int[length];
 
-        for (int i = 0; i < length; i++) {
-            if (i == 0) {
-                answer[i] = 1;
-            } else {
-                answer[i] = answer[i - 1] * input[i - 1];
-            }
+        answer[0] = 1;
+        for (int i = 1; i < length; i++) {
+            answer[i] = answer[i - 1] * input[i - 1];
         }
 
         int suffixProd = 1;
-        for (int i = length - 1; i >= 0; i--) {
-            if (i != length - 1) {
+        int size = length - 1;
+        for (int i = size; i >= 0; i--) {
+            if (i != size) {
                 answer[i] = answer[i] * suffixProd;
             }
             suffixProd = input[i] * suffixProd;
