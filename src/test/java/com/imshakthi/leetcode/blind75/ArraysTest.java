@@ -1,9 +1,14 @@
 package com.imshakthi.leetcode.blind75;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ArraysTest {
 
@@ -25,22 +30,26 @@ class ArraysTest {
         assertArrayEquals(actual, expected);
     }
 
-    @Test
-    void containsDuplicateShouldReturnTrue() {
-        int[] nums = new int[]{1, 2, 3, 1};
+    @Nested
+    @DisplayName("Contains Duplicates")
+    class TestContainsDuplicates {
+        @Test
+        void containsDuplicateShouldReturnTrue() {
+            int[] nums = new int[]{1, 2, 3, 1};
 
-        boolean actual = testClass.containsDuplicate(nums);
+            boolean actual = testClass.containsDuplicate(nums);
 
-        assertTrue(actual);
-    }
+            assertTrue(actual);
+        }
 
-    @Test
-    void containsDuplicateShouldReturnFalse() {
-        int[] nums = new int[]{1, 2, 3, 4};
+        @Test
+        void containsDuplicateShouldReturnFalse() {
+            int[] nums = new int[]{1, 2, 3, 4};
 
-        boolean actual = testClass.containsDuplicate(nums);
+            boolean actual = testClass.containsDuplicate(nums);
 
-        assertFalse(actual);
+            assertFalse(actual);
+        }
     }
 
     @Test
@@ -54,50 +63,86 @@ class ArraysTest {
         assertArrayEquals(expected, nums);
     }
 
-    @Test
-    void maxProfitShouldReturnProfitOfTwoDays() {
-        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+    @Nested
+    @DisplayName("Max Profit")
+    class TestMaxProfit {
+        @Test
+        void maxProfitShouldReturnProfitOfTwoDays() {
+            int[] prices = new int[]{7, 1, 5, 3, 6, 4};
 
-        int profit = testClass.maxProfit(prices);
+            int profit = testClass.maxProfit(prices);
 
-        assertEquals(7, profit);
+            assertEquals(7, profit);
+        }
+
+        @Test
+        void maxProfitShouldReturnProfitWhen() {
+            int[] prices = new int[]{1, 2, 3, 4, 5};
+
+            int profit = testClass.maxProfit(prices);
+
+            assertEquals(4, profit);
+        }
+
+        @Test
+        void maxProfitShouldReturnZeroWhenProfitIsNotPossible() {
+            int[] prices = new int[]{7, 6, 4, 3, 1};
+
+            int profit = testClass.maxProfit(prices);
+
+            assertEquals(0, profit);
+        }
+
     }
 
-    @Test
-    void maxProfitShouldReturnProfitWhen() {
-        int[] prices = new int[]{1, 2, 3, 4, 5};
+    @Nested
+    @DisplayName("Plus one")
+    class TestPlusOne {
+        @Test
+        void plusOneReturnOneIncrValue() {
+            int[] digits = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6};
+            int[] expected = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7};
 
-        int profit = testClass.maxProfit(prices);
+            int[] actual = testClass.plusOne(digits);
 
-        assertEquals(4, profit);
+            assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        void plusOneReturnTenForNine() {
+            int[] digits = {9};
+            int[] expected = {1, 0};
+
+            int[] actual = testClass.plusOne(digits);
+
+            assertArrayEquals(expected, actual);
+        }
     }
 
-    @Test
-    void maxProfitShouldReturnZeroWhenProfitIsNotPossible() {
-        int[] prices = new int[]{7, 6, 4, 3, 1};
 
-        int profit = testClass.maxProfit(prices);
+    @Nested
+    @DisplayName("Product Of Array Except Self")
+    class TestProductOfArrayExceptSelf {
 
-        assertEquals(0, profit);
+        @Test
+        void shouldReturnProductWithPositiveInput() {
+            int[] input = {4, 5, 1, 8, 2, 10, 6};
+            int[] expected = {4800, 3840, 19200, 2400, 9600, 1920, 3200};
+
+            int[] actual = testClass.getProductOfArrayExceptSelf(input);
+
+            assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        void shouldReturnProductWithNegativeInput() {
+            int[] input = {-1, 1, 0, -3, 3};
+            int[] expected = {0, 0, 9, 0, 0};
+
+            int[] actual = testClass.getProductOfArrayExceptSelf(input);
+
+            assertArrayEquals(expected, actual);
+        }
     }
 
-    @Test
-    void plusOneReturnOneIncrValue() {
-        int[] digits = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6};
-        int[] expected = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7};
-
-        int[] actual = testClass.plusOne(digits);
-
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    void plusOneReturnTenForNine() {
-        int[] digits = {9};
-        int[] expected = {1, 0};
-
-        int[] actual = testClass.plusOne(digits);
-
-        assertArrayEquals(expected, actual);
-    }
 }

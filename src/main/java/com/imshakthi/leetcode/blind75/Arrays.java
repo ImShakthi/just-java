@@ -53,12 +53,10 @@ public class Arrays {
         int maxprofit = 0;
         for (int i = 0; i < prices.length - 1; ) {
 
-            while (i < prices.length - 1 && prices[i] >= prices[i + 1])
-                i++;
+            while (i < prices.length - 1 && prices[i] >= prices[i + 1]) i++;
             valley = prices[i];
 
-            while (i < prices.length - 1 && prices[i] <= prices[i + 1])
-                i++;
+            while (i < prices.length - 1 && prices[i] <= prices[i + 1]) i++;
             peak = prices[i];
 
             maxprofit += peak - valley;
@@ -76,12 +74,34 @@ public class Arrays {
         input = input.add(BigDecimal.ONE);
 
 
-
         String onePlus = String.valueOf(input);
         int[] result = new int[onePlus.length()];
         for (int i = 0; i < onePlus.length(); i++) {
             result[i] = Integer.parseInt(String.valueOf(onePlus.charAt(i)));
         }
         return result;
+    }
+
+    //https://leetcode.com/problems/product-of-array-except-self/
+    public int[] getProductOfArrayExceptSelf(int[] input) {
+        int length = input.length;
+        int[] answer = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            if (i == 0) {
+                answer[i] = 1;
+            } else {
+                answer[i] = answer[i - 1] * input[i - 1];
+            }
+        }
+
+        int suffixProd = 1;
+        for (int i = length - 1; i >= 0; i--) {
+            if (i != length - 1) {
+                answer[i] = answer[i] * suffixProd;
+            }
+            suffixProd = input[i] * suffixProd;
+        }
+        return answer;
     }
 }
