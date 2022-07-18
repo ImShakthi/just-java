@@ -1,9 +1,6 @@
 package com.imshakthi.leetcode.blind75;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -97,6 +94,7 @@ class ArraysTest {
 
     @Nested
     @DisplayName("Plus one")
+    @Disabled
     class TestPlusOne {
         @Test
         void plusOneReturnOneIncrValue() {
