@@ -9,15 +9,17 @@ public class StreamLazyLoading {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
         System.out.println("Without terminal method STARTS....");
-        numbers.stream()
+        System.out.println(numbers.stream()
                 .filter(StreamLazyLoading::lesserThan3)
-                .filter(StreamLazyLoading::isEven);
+                .filter(StreamLazyLoading::isEven)
+                .collect(Collectors.toList()));
         System.out.println("Without terminal method ENDS......");
 
 
         System.out.println("With terminal method STARTS....");
         System.out.println(numbers.stream()
                 .filter(StreamLazyLoading::lesserThan3)
+                .map(StreamLazyLoading::mul2)
                 .filter(StreamLazyLoading::isEven)
                 .collect(Collectors.toList()));
         System.out.println("With terminal method");
@@ -31,5 +33,9 @@ public class StreamLazyLoading {
     private static boolean lesserThan3(int number) {
         System.out.println("lesser than 3");
         return number < 3;
+    }
+
+    private static int mul2(int number) {
+        return number * 2;
     }
 }

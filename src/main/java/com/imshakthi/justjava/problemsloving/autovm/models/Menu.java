@@ -24,6 +24,10 @@ public final class Menu {
     }
 
     List<FoodItem> initData() {
+        return getFoodItems();
+    }
+
+    public static List<FoodItem> getFoodItems() {
         return ImmutableList.<FoodItem>builder().add(new FoodItem("Coke", 7, DRINKS))
                 .add(new FoodItem("Lemonade", 10, DRINKS))
                 .add(new FoodItem("Orange juice", 11, DRINKS))
