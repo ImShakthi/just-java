@@ -1,19 +1,25 @@
 package com.imshakthi.leetcode.blind75;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ArraysTest {
+class ArrayAndHashingTest {
 
-    Arrays testClass;
+    ArrayAndHashing testClass;
 
     @BeforeEach
     void setUp() {
-        testClass = new Arrays();
+        testClass = new ArrayAndHashing();
     }
 
     @Test
@@ -143,4 +149,22 @@ class ArraysTest {
         }
     }
 
+    @Nested
+    @DisplayName("Group Anagram")
+    class TestGroupAnagrams {
+
+        @Test
+        void shouldReturnGroupAnagramsForNormalInput() {
+            String[] input = {"eat", "tea", "tan", "ate", "nat", "bat"};
+            List<List<String>> expected = List.of(
+                List.of("bat"),
+                List.of("tan", "nat"),
+                List.of("eat", "tea", "ate")
+            );
+
+            List<List<String>> actual = testClass.groupAnagrams(input);
+
+            assertEquals(expected, actual);
+        }
+    }
 }

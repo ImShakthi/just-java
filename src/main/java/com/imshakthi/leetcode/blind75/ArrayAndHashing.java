@@ -1,10 +1,13 @@
 package com.imshakthi.leetcode.blind75;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Arrays {
+public class ArrayAndHashing {
 
     // https://leetcode.com/problems/two-sum/
     public int[] twoSums(int[] nums, int target) {
@@ -102,4 +105,26 @@ public class Arrays {
         }
         return answer;
     }
+
+    public List<List<String>> groupAnagrams(final String[] input) {
+        Map<String, List<String>> data = new HashMap<>();
+        Arrays.stream(input).forEach(i -> data.computeIfAbsent(getSignature(i), s -> new ArrayList<>()).add(i));
+        return new ArrayList<>(data.values());
+    }
+
+    private static String getSignature(String input) {
+        int[] counter = new int[26];
+        for (char c : input.toCharArray()) {
+            counter[c - 'a']++;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 26; i++) {
+            if (counter[i] != 0) {
+                sb.append((char) (i + 'a')).append(counter[i]);
+            }
+        }
+        return sb.toString();
+    }
+
 }
