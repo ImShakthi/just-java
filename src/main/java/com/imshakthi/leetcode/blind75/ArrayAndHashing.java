@@ -127,4 +127,17 @@ public class ArrayAndHashing {
         return sb.toString();
     }
 
+    // https://leetcode.com/problems/top-k-frequent-elements/
+    public List<Integer> getTopKFrequentElements(int noOfOccurrence, List<Integer> nums) {
+        Map<Integer, Integer> counter = new HashMap<>();
+
+        nums.forEach(num -> counter.compute(num, (k, v) -> v == null ? 1 : v + 1));
+
+        return counter.keySet()
+            .stream()
+            .map(counter::get)
+            .filter(k -> k <= noOfOccurrence)
+            .sorted()
+            .toList();
+    }
 }

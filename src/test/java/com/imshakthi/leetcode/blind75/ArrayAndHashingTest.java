@@ -167,4 +167,29 @@ class ArrayAndHashingTest {
             assertEquals(expected, actual);
         }
     }
+
+    @Nested
+    @DisplayName("Top K Frequent elements")
+    class TestTopKFrequentElements {
+
+        @Test
+        void shouldReturnValidTopKFrequentElementsForGivenNormalList() {
+            var expected = List.of(1, 2);
+            var input = List.of(1, 1, 1, 2, 2, 3);
+
+            var actual = testClass.getTopKFrequentElements(2, input);
+
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        void shouldReturnValidTopKFrequentElementsForSingleSet() {
+            var expected = List.of(1);
+            var input = List.of(1);
+
+            var actual = testClass.getTopKFrequentElements(1, input);
+
+            assertEquals(expected, actual);
+        }
+    }
 }
