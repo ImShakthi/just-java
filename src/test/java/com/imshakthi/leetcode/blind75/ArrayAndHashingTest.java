@@ -191,5 +191,51 @@ class ArrayAndHashingTest {
 
             assertEquals(expected, actual);
         }
+
+        @Test
+        void shouldReturnValidTopKFrequentElementsForNegativeSet() {
+            var expected = List.of(-1);
+            var input = List.of(-1, -1);
+
+            var actual = testClass.getTopKFrequentElements(1, input);
+
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        void shouldReturnValidTopKFrequentElementsForDistinctSet() {
+            var expected = List.of(1, 2);
+            var input = List.of(1, 2);
+
+            var actual = testClass.getTopKFrequentElements(2, input);
+
+            assertEquals(expected, actual);
+        }
+    }
+
+    @Nested
+    @DisplayName("Encode and decode string")
+    class TestEncodeAndDecodeString {
+
+        @Test
+        public void shouldReturnExpectedWhenInputIsSimple() {
+            var input = List.of("Hello", "World");
+            String encode = testClass.encodeString(input);
+
+            List<String> decoded = testClass.decodeString(encode);
+
+            assertEquals(input, decoded);
+        }
+
+        @Test
+        public void shouldReturnExpectedWhenInputIsEmpty() {
+            List<String> input = List.of();
+
+            String encode = testClass.encodeString(input);
+
+            List<String> decoded = testClass.decodeString(encode);
+
+            assertEquals(input, decoded);
+        }
     }
 }

@@ -133,11 +133,31 @@ public class ArrayAndHashing {
 
         nums.forEach(num -> counter.compute(num, (k, v) -> v == null ? 1 : v + 1));
 
-        return counter.keySet()
-            .stream()
-            .map(counter::get)
-            .filter(k -> k <= noOfOccurrence)
-            .sorted()
-            .toList();
+        System.out.println(counter);
+
+        return counter.keySet().stream().sorted((k1, k2) -> counter.get(k2).compareTo(counter.get(k1))).limit(noOfOccurrence).toList();
+    }
+
+
+    //    https://leetcode.com/problems/encode-and-decode-strings/description/
+    public String encodeString(List<String> input) {
+        StringBuilder sb = new StringBuilder();
+
+        input.forEach(i -> sb.append((char) i.length()).append(i));
+
+        return sb.toString();
+    }
+
+    public List<String> decodeString(String input) {
+        List<String> result = new ArrayList<>();
+
+        int index = 0;
+        int length = input.length();
+        while (index < length) {
+            int size = input.charAt(index++);
+            result.add(input.substring(index, index + size));
+            index += size;
+        }
+        return result;
     }
 }
