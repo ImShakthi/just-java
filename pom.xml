@@ -27,15 +27,10 @@
         </dependency>
 
         <!--  NEO4J-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.neo4j</groupId>-->
-        <!--            <artifactId>neo4j</artifactId>-->
-        <!--            <version>4.4.10</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.neo4j.driver</groupId>
             <artifactId>neo4j-java-driver</artifactId>
-            <version>5.0.0</version>
+            <version>5.27.0</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.neo4j</groupId>-->
@@ -43,12 +38,6 @@
 <!--            <version>4.4.11</version>-->
 <!--            <type>pom</type>-->
 <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.junit.jupiter</groupId>-->
-        <!--            <artifactId>junit-jupiter-params</artifactId>-->
-        <!--            <version>${junit.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
