@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.stream.IntStream;
 import lombok.Builder;
 
-public class DoctoLibAssignment {
+public class DLAssignment {
 
   private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

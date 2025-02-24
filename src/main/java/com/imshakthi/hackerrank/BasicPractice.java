@@ -1,7 +1,11 @@
 package com.imshakthi.hackerrank;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -9,6 +13,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class BasicPractice {
   public void stdInAndOut() {
@@ -88,24 +93,18 @@ public class BasicPractice {
   }
 
   public void printAllCurrency() {
-    Scanner scan = new Scanner(System.in);
-    double amount = scan.nextDouble();
-    System.out.println("US: $" + printCurrency(Locale.US, amount));
-    System.out.println(
-        "India: Rs."
-            + NumberFormat.getCurrencyInstance(new Locale("en", "in"))
-                .format(12324.134)
-                .substring(1));
-    System.out.println("China: " + printCurrency(Locale.CHINA, amount));
-    System.out.println(
-        "China: " + NumberFormat.getCurrencyInstance(new Locale("zh", "CN")).format(12324.134));
-    System.out.println(
-        "China: " + NumberFormat.getCurrencyInstance(new Locale("zh", "TW")).format(12324.134));
-    System.out.println("France: " + printCurrency(Locale.FRANCE, amount) + "€");
-  }
+    //    Scanner scan = new Scanner(System.in);
+    //    double amount = scan.nextDouble();
+    double amount = 1010.139999;
 
-  private String printCurrency(Locale type, double amount) {
-    return NumberFormat.getCurrencyInstance(type).format(amount).intern();
+    DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("en", "IN"));
+    symbols.setGroupingSeparator(',');
+    DecimalFormat df = new DecimalFormat("#,##,##0.00", symbols);
+
+    System.out.println("US: " + NumberFormat.getCurrencyInstance(Locale.US).format(amount));
+    System.out.println("India: Rs." + df.format(amount));
+    System.out.println("China: " + NumberFormat.getCurrencyInstance(Locale.CHINA).format(amount));
+    System.out.println("France: " + NumberFormat.getCurrencyInstance(Locale.FRANCE).format(amount));
   }
 
   public boolean isAnagram(String s1, String s2) {
@@ -196,15 +195,21 @@ public class BasicPractice {
     return stack.empty();
   }
 
-  public void temp() {
-    try {
-      Float f1 = new Float("3.0");
-      int x = f1.intValue();
-      byte b = f1.byteValue();
-      double d = f1.doubleValue();
-      System.out.println(x + b + d);
-    } catch (NumberFormatException e) {
-      System.out.println("bad number");
-    }
+  // https://www.hackerrank.com/challenges/java-bigdecimal/
+  public List<String> testBigDecimal(final List<String> input) {
+
+//    Scanner scan = new Scanner(System.in);
+//    final int n = scan.nextInt();
+//    final List<String> in = new LinkedList<>();
+//    for (int i = 0; i < n; i++) {
+//      in.add(scan.nextLine());
+//    }
+
+    return input.stream()
+        .filter(x -> !x.isBlank())
+        .map(BigDecimal::new)
+        .sorted(Comparator.reverseOrder())
+        .map(BigDecimal::toPlainString)
+        .collect(Collectors.toList());
   }
 }

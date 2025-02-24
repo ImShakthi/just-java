@@ -41,15 +41,28 @@ class BasicPracticeTest {
 
   @Test
   public void isStringBalanced_shouldReturnTrueWhenStringIsBalanced() {
-    final var actual =testClass.isStringBalanced(List.of("{}()","{()}","({()})","{}(","({)}","((","}{"));
+    final var actual =
+        testClass.isStringBalanced(List.of("{}()", "{()}", "({()})", "{}(", "({)}", "((", "}{"));
     final var expected = List.of(true, true, true, false, false, false, false);
 
     assertEquals(expected, actual);
   }
 
-  /* dddd*/
   @Test
-  public void temp(){
-    testClass.temp();
+  void printAllCurrency() {
+    testClass.printAllCurrency();
+  }
+
+  @Test
+  void testBigDecimal() {
+
+    final List<String> input =
+        List.of("9", "-100", "50", "0", "56.6", "90", "0.12", ".12", "02.34", "000.000");
+    final List<String> expected =
+        List.of("90", "56.6", "50", "02.34", "0.12", ".12", "0", "000.000", "-100");
+
+    final var actual = testClass.testBigDecimal(input);
+
+    assertEquals(expected, actual);
   }
 }

@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DoctoLibAssignmentTest {
 
-    private DoctoLibAssignment testObj;
+    private DLAssignment testObj;
 
     @BeforeEach
     void setUp() {
-        testObj = new DoctoLibAssignment();
+        testObj = new DLAssignment();
     }
 
     @Test
